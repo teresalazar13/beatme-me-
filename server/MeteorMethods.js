@@ -1,11 +1,10 @@
 Meteor.methods({
-
-  'memes.insert': function(url,userId) {
+  'memes.insert': function(url) {
     Memes.insert({
-          url: url,
-          user: userId,
-          createdAt: new Date()
-    })
-  } 
+      url: url,
+      user: Meteor.userId(),
+      createdAt: new Date()
+    });
+  }
 
-});   
+});
