@@ -4,30 +4,26 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 
 Template.main.helpers({
-
+  memes: function() {
+    return Memes.find();
+  },
 });
 
 Template.main.events({
-  'click .memesubmit': function(event){
+  'click .meme-submit': function(event) {
     event.preventDefault();
-    var target = event.target;
-    var e  = document.getElementById('memetemplate');    
+    var e = document.getElementById('memetemplate');
     var select = e.options[e.selectedIndex].value;
-    console.log(target);
-    console.log(select);
-    var toptext =document.getElementById("toptext").value;;
-    var bottomtext = document.getElementById("bottomtext").value;;
-    console.log(toptext);
-    console.log(bottomtext);
+    var toptext = document.getElementById("toptext").value;
+    var bottomtext = document.getElementById("bottomtext").value;
     var urltext = document.getElementById("urltext").value;
-    console.log(urltext);
-    if(select == "default"){
-    	var url= "https://memegen.link/custom/"+toptext+"/" + bottomtext+".jpg?alt="+urltext;
+    var url = null;
+    if (select == "default") {
+    	url = "https://memegen.link/custom/" + toptext + "/" + bottomtext+ ".jpg?alt=" + urltext;
     }
     else {
-    	var url = "https://memegen.link/api/templates/" + select +"/"+toptext+"/"+bottomtext;
+    	url = "https://memegen.link/" + select + "/" + toptext + "/" + bottomtext + ".jpg";
     }
-    var ID = Meteor.userId;
-  	Meteor.call('memes.insert',url, ID);
+  	Meteor.call('memes.insert', url);
   }
 });
