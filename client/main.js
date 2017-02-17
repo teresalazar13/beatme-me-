@@ -8,25 +8,26 @@ Template.main.helpers({
 });
 
 Template.main.events({
-  'submit .new-meme': function(error){
+  'click .memesubmit': function(event){
     event.preventDefault();
     var target = event.target;
-    var select  = document.getElementById('memetemplate')
+    var e  = document.getElementById('memetemplate');    
+    var select = e.options[e.selectedIndex].value;
     console.log(target);
     console.log(select);
-
-    var toptext = target.toptext.value;
-    var bottomtext = target.toptext.value;
+    var toptext =document.getElementById("toptext").value;;
+    var bottomtext = document.getElementById("bottomtext").value;;
     console.log(toptext);
     console.log(bottomtext);
+    var urltext = document.getElementById("urltext").value;
+    console.log(urltext);
     if(select == "default"){
-    	var urltext = target.urltext.value;
-    	var url= "https://memegen.link/custom/"+toptext+"/" + bottomtext+".jpg?alt="+url;
+    	var url= "https://memegen.link/custom/"+toptext+"/" + bottomtext+".jpg?alt="+urltext;
     }
     else {
     	var url = "https://memegen.link/api/templates/" + select +"/"+toptext+"/"+bottomtext;
     }
     var ID = Meteor.userId;
-  	Meteor.memes.insert(url,ID);
+  	Meteor.call('memes.insert',url, ID);
   }
 });
