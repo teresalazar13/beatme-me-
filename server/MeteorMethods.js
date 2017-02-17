@@ -6,6 +6,9 @@ Meteor.methods({
           user: userId,
           createdAt: new Date()
     })
-  } 
+  },
+  'users.findId': function(username){
+  	return Meteor.users.find({username: username});	
+  }
 
 });   
