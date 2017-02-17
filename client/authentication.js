@@ -1,23 +1,30 @@
 var currentTab = 'sign_up';
 
 
-Template.authetication.events({
+Template.authentication.events({
   'click .sign-in': function(event, err) {
     if (currentTab == 'sign_in') {
-        callback_signin();
+      Meteor.loginWithPassword($('#sign-in-tab').find('#username-input').val(), $('#sign-in-tab').find('#password-input').val(), function(err) {
+        if (err) {
+          console.log(err.reason);
+        }
+      });
     }
     currentTab = 'sign_in';
   },
 
   'click #sign-up': function(event) {
     if (currentTab == 'sign_up') {
-        callback_signup();
+      Accounts.createUser({
+          username: $('#sign-up-tab').find('#username-input').val(),
+          password: $('#sign-up-tab').find('#password-input').val()
+      });
     }
     currentTab = 'sign_up';
-  },
+  }
 });
 
 
-Template.authetication.helpers({
+Template.authentication.helpers({
 
 });
