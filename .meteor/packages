@@ -24,3 +24,4 @@ accounts-base
 npm-bcrypt@0.8.7
 accounts-password
 check
+sacha:spin

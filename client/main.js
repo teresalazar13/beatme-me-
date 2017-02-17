@@ -4,7 +4,9 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './main.html';
 
 Template.main.helpers({
-
+  memes: function() {
+    return Memes.find();
+  },
 });
 
 Template.main.events({
