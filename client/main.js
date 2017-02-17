@@ -3,11 +3,11 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './main.html';
 
-Template.submit.helpers({
+Template.main.helpers({
 
 });
 
-Template.submit.events({
+Template.main.events({
   'submit .new-meme': function(error){
     event.preventDefault();
     var target = event.target;
