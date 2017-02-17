@@ -20,4 +20,7 @@ shell-server@0.2.1            # Server-side component of the `meteor shell` comm
 
 iron:router
 twbs:bootstrap
+accounts-base
+npm-bcrypt@0.8.7
+accounts-password
 check
