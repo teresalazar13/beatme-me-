@@ -3,22 +3,24 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">
-          <img class="navbar-brand-img" alt="Brand" src="/beatmeme-08.png">
+          <img class="navbar-brand-img" alt="Brand" src="/beatmeme-07.png">
         </a>
+        {{url}}
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li>
+          <li class="{{home_status}}">
+            <a href="/">Home</a>
           </li>
-          <li>
+          <li class="{{battles_status}}">
             <a href="/battles">Battles
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li>
+          <li class="{{leaderboard_status}}">
             <a href="/leaderboard">Leaderboard</a>
           </li>
-          <li>
+          <li class="{{profile_status}}">
             <a href="/profile/{{username}}">Profile</a>
           </li>
         </ul>
