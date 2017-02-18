@@ -6,11 +6,16 @@ import './main.html';
 Session.setDefault("toptext", "");
 Session.setDefault("bottomtext", "");
 Session.setDefault("urltext", "");
+Session.setDefault("choice1", false);
 
 Template.main.helpers({
   memes: function() {
     return Memes.find();
   },
+
+  choice: function () {
+    return Session.get("choice1");
+  }
   /*
 
   sourcePreview: function() {
@@ -62,5 +67,22 @@ Template.main.events({
     }
 
   	Meteor.call('memes.insert', url);
+  },
+
+  'click #choice1': function(event) {
+    Session.set("choice1", true);
+    var button1 = document.getElementById("choice1");
+    var button2 = document.getElementById("choice2");
+    button1.setAttribute("style","background-color:black");
+    button2.setAttribute("style","background-color:white");
+
+  },
+
+  'click #choice2': function(event) {
+    Session.set("choice1", false);
+    var button1 = document.getElementById("choice1");
+    var button2 = document.getElementById("choice2");
+    button1.setAttribute("style","background-color:white");
+    button2.setAttribute("style","background-color:black");
   }
 });

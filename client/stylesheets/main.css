@@ -94,24 +94,19 @@ ul li .authentication-buttons:hover{
   text-decoration: none;
 }
 
-
-.navbar-brand {
-
+.navbar-header, .navbar-collapse {
+	display:inline-block;
 }
 
-.navbar-collapse {
-  margin-left: 5%;
-  position: relative;
-}
 
 .navbar-brand-img {
-  width: 5%;
-  float: none;
+	width: 120px;
+	margin-top:-8px;
 }
 
 .main-title {
   font-family: Helvetica;
-  text-align: center;
+  text-align: left;
 }
 
 .main-submit-text {
@@ -132,14 +127,23 @@ ul li .authentication-buttons:hover{
 }
 
 .main-select {
+	margin-top:1.2%;
+	display:block;
   height: 30px;
   outline: 0;
   background-color: #333;
   color: white;
   margin-bottom: 1%;
+	border-radius:5px;
 }
 
-#main-button-submit {
+.meme-submit {
+  border: 1px solid rgb(163,46,46);
+  background-color: rgb(163,46,46);
+  color: white;
+  margin-top: 2%;
+}
+.meme-preview {
   border: 1px solid rgb(163,46,46);
   background-color: transparent;
   color: rgb(163,46,46);
@@ -148,4 +152,20 @@ ul li .authentication-buttons:hover{
 
 .preview-meme {
   height: 100px;
+}
+
+.choice {
+	padding: 5px 10px;
+	border-radius:5px;
+	background-color: transparent;
+	border: 1px solid black;
+	color:#333;
+}
+
+.meme-generator {
+	text-align: center;
+}
+
+.meme-generator img {
+	border-radius: 5px;
 }
