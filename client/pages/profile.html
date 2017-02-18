@@ -1,5 +1,11 @@
 <template name="profile">
   <h1>{{username}}'s Profile</h1>
   {{> accept}}
-  
+  <p>Victories
+    {{victories}}</p>
+  <p>Defeats
+    {{defeats}}</p>
+  {{#each memesByUser}}
+    {{> meme_user_page}}
+  {{/each}}
 </template>

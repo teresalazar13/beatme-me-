@@ -3,6 +3,13 @@
 	padding: 0;
 }
 
+hr {
+	border: 0.1px solid #333;
+	width: 70%;
+	margin: 0 auto;
+	margin-top: 2%;
+}
+
 .fullscreen {
   position: fixed;
   top: 0;
@@ -106,7 +113,10 @@ ul li .authentication-buttons:hover{
 
 .main-title {
   font-family: Helvetica;
-  text-align: left;
+  text-align: center;
+	margin-top: 4%;
+	font-weight: 100;
+	color: #333; font-size: 48px; font-family: 'Signika', sans-serif; padding-bottom: 10px;
 }
 
 .main-submit-text {
@@ -126,15 +136,33 @@ ul li .authentication-buttons:hover{
   outline: 0;
 }
 
+#use-url {
+	color: white;
+	outline: 0;
+	border: 1px solid #333;
+	background-color: #333;
+	border-radius: 5px;
+	padding: 6px 12px;
+}
+
+#use-template {
+	color: black;
+	padding: 6px 12px;
+	outline: 0;
+	border: 1px solid #333;
+	background-color: transparent;
+	border-radius: 5px;
+}
+
 .main-select {
-	margin-top:1.2%;
-	display:block;
-  height: 30px;
+	margin-top: 0.47%;
+	display: block;
+  height: 35.1px;
   outline: 0;
   background-color: #333;
   color: white;
-  margin-bottom: 1%;
-	border-radius:5px;
+  margin-bottom: 0.1%;
+	border-radius: 5px;
 }
 
 .meme-submit {
@@ -143,6 +171,7 @@ ul li .authentication-buttons:hover{
   color: white;
   margin-top: 2%;
 }
+
 .meme-preview {
   border: 1px solid rgb(163,46,46);
   background-color: transparent;
@@ -166,6 +195,25 @@ ul li .authentication-buttons:hover{
 	text-align: center;
 }
 
-.meme-generator img {
+.main-meme-image {
+	max-width: 100%;
 	border-radius: 5px;
+	height: auto;
+}
+
+.meme-username {
+	margin-top: 2%;
+	margin-bottom: 2%;
+	font-size: 20px;
+	text-align: center;
+}
+
+.meme-username-link {
+	text-decoration: none;
+	color: #333;
+}
+
+.meme-username-link:hover {
+	color: rgba(163,46,46,0.6);
+	text-decoration: none;
 }

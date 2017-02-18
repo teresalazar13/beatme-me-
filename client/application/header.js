@@ -6,25 +6,25 @@ Template.header.helpers({
   home_status: function() {
     var url = decodeURIComponent(Router.current().location.get().path.split("/")[1]);
     if (url === "")
-      return "active";
+      return "border-bottom: 3px solid rgb(163,46,46)";
   },
 
   battles_status: function() {
     var url = decodeURIComponent(Router.current().location.get().path.split("/")[1]);
     if (url == "battles")
-      return "active";
+      return "border-bottom: 3px solid rgb(163,46,46)";
   },
 
   leaderboard_status: function() {
     var url = decodeURIComponent(Router.current().location.get().path.split("/")[1]);
     if (url == "leaderboard")
-      return "active";
+      return "border-bottom: 3px solid rgb(163,46,46)";
   },
 
   profile_status: function() {
     var url = decodeURIComponent(Router.current().location.get().path.split("/")[1]);
     if (url == "profile")
-      return "active";
+      return "border-bottom: 3px solid rgb(163,46,46)";
   }
 });
 

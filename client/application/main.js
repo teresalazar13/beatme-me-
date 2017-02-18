@@ -6,15 +6,15 @@ import './main.html';
 Session.setDefault("toptext", "");
 Session.setDefault("bottomtext", "");
 Session.setDefault("urltext", "");
-Session.setDefault("choice1", false);
+Session.setDefault("use-url", true);
 
 Template.main.helpers({
   memes: function() {
     return Memes.find();
   },
 
-  choice: function () {
-    return Session.get("choice1");
+  use_url: function () {
+    return Session.get("use-url");
   }
   /*
 
@@ -57,32 +57,31 @@ Template.main.events({
     var select = e.options[e.selectedIndex].value;
     var toptext = document.getElementById("toptext").value;
     var bottomtext = document.getElementById("bottomtext").value;
-    var urltext = document.getElementById("urltext").value;
     var url = null;
+    var urltext = null;
     if (select == "default") {
+      urltext = document.getElementById("urltext").value;
     	url = "https://memegen.link/custom/" + toptext + "/" + bottomtext+ ".jpg?alt=" + urltext;
     }
     else {
     	url = "https://memegen.link/" + select + "/" + toptext + "/" + bottomtext + ".jpg";
     }
-
   	Meteor.call('memes.insert', url);
   },
 
-  'click #choice1': function(event) {
-    Session.set("choice1", true);
-    var button1 = document.getElementById("choice1");
-    var button2 = document.getElementById("choice2");
-    button1.setAttribute("style","background-color:black");
-    button2.setAttribute("style","background-color:white");
-
+  'click #use-template': function(event) {
+    Session.set("use-url", false);
+    var button1 = document.getElementById("use-template");
+    var button2 = document.getElementById("use-url");
+    button1.setAttribute("style","background-color:#333; color:white");
+    button2.setAttribute("style","background-color:white; color:#333");
   },
 
-  'click #choice2': function(event) {
-    Session.set("choice1", false);
-    var button1 = document.getElementById("choice1");
-    var button2 = document.getElementById("choice2");
-    button1.setAttribute("style","background-color:white");
-    button2.setAttribute("style","background-color:black");
+  'click #use-url': function(event) {
+    Session.set("use-url", true);
+    var button1 = document.getElementById("use-template");
+    var button2 = document.getElementById("use-url");
+    button1.setAttribute("style","background-color:white;");
+    button2.setAttribute("style","background-color:#333; ");
   }
 });

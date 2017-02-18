@@ -5,25 +5,27 @@
 
 <template name="main">
   <div class="container-fluid">
-
+    <h1 class="main-title">Welcome to
+      <strong>beatme(me)</strong>
+    </h1>
+    <hr class>
     <div class="submit-meme">
-      <!--<h1 class="main-title">Welcome to beatme(me)</h1>-->
       <p class="main-submit-text">Submit a meme</p>
-      <button id="choice1" class="temp">Use template</button>
-      <button id="choice2" class="url">Insert URL</button>
-      {{#if choice}}
-      <select class="main-select" name="meme-template" id="meme-template">
-        <option value="default">Choose a used template</option>
-        <option value="tenguy">Ten Guy</option>
-        <option value="fry">Confused Fry</option>
-        <option value="ch">Captain Hindsight</option>
-        <option value="yodawg">Xzibit</option>
-      </select>
-      {{/if}}
+      <button id="use-template" class="btn btn-default main-choice-buttons">Use template</button>
+      <button id="use-url" class="btn btn-default main-choice-buttons">Insert URL</button>
+      {{#unless use_url}}
+        <select class="main-select" name="meme-template" id="meme-template">
+          <option value="default">Choose a used template</option>
+          <option value="tenguy">Ten Guy</option>
+          <option value="fry">Confused Fry</option>
+          <option value="ch">Captain Hindsight</option>
+          <option value="yodawg">Xzibit</option>
+        </select>
+      {{/unless}}
       <form class="submit">
-        {{#unless choice}}
+        {{#if use_url}}
           <input type="text" name="urltext" placeholder="Image URL" class="form-control main-inputs" id="urltext"/>
-        {{/unless}}
+        {{/if}}
         <input type="text" name="toptext" placeholder="Top text" class="form-control main-inputs" id="toptext"/>
         <input type="text" name="bottomtext" placeholder="Bottom text" class="form-control main-inputs" id="bottomtext"/>
         <button id="main-button-submit" type="button" class="btn btn-default meme-submit">
@@ -34,10 +36,10 @@
         </button>
       </form>
       <img class="preview-meme" src="{{sourcePreview}}" alt="">
+      {{#each memes}}
+        {{> meme}}
+      {{/each}}
     </div>
-    {{#each memes}}
-      {{> meme}}
-    {{/each}}
   </div>
 
 </template>

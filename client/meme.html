@@ -1,9 +1,10 @@
 <template name="meme">
-  <div class="meme-generator">
-  <h1>Meme</h1>
-  <img src="{{url}}" alt="">
-  <h2>by
-    {{userUsername}}
-  </h2>
-</div>
+  <div class="container-fluid meme-generator">
+    <img class="img-fluid main-meme-image" src="{{url}}" alt="">
+    <p class="meme-username">by
+      <a href="profile/{{userUsername}}" class="meme-username-link">
+        <strong>{{userUsername}}</strong>
+      </a>
+    </p>
+  </div>
 </template>

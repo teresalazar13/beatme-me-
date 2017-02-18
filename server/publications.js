@@ -19,6 +19,8 @@ Meteor.publish("usersData", function() {
       return Meteor.users.find({}, {
         fields: {
           "username": true,
+          "victories": true,
+          "defeats": true
         }
       });
     } else {
