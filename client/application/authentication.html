@@ -1,25 +1,29 @@
 <template name="authentication">
-  <h1>Authentication</h1>
-  <form id="authentication-form">
-    <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="sign-up-tab">
-        <input class="" placeholder="Username" type="text" id="username-input">
-        <input class="" placeholder="Password" type="text" id="password-input">
-        <input class="" placeholder="Confirm Password" type="text" id="confirm-password-input">
-      </div>
-      <div role="tabpanel" class="tab-pane" id="sign-in-tab">
-        <input class="" placeholder="Username" type="text" id="username-input">
-        <input class="" placeholder="Password" type="text" id="password-input">
-      </div>
+  <img class="fullscreen" src="imagem.jpg"/>
+  <div class="authentication-body">
+    <img class="authentication-logo" src="beatmeme-05.png"/>
+    <div class="authentication-body-description">
+      <p class="authentication-description">A platform for sharing memes and challenging your friends for meme battles</p>
     </div>
-  </form>
-  <div>
+    <form id="authentication-form">
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="sign-up-tab">
+          <input class="authentication-inputs" placeholder="Username" type="text" id="username-input">
+          <input class="authentication-inputs" placeholder="Password" type="password" id="password-input">
+          <input class="authentication-inputs" placeholder="Confirm Password" type="password" id="confirm-password-input">
+        </div>
+        <div role="tabpanel" class="tab-pane" id="sign-in-tab">
+          <input class="authentication-inputs" placeholder="Username" type="text" id="username-input">
+          <input class="authentication-inputs" placeholder="Password" type="password" id="password-input">
+        </div>
+      </div>
+    </form>
     <ul class="authentication-ul" role="tablist">
       <li class="nav-item">
-        <a id="sign-up" role="tab" data-toggle="tab" class="buttons-style nav-link active" href="#sign-up-tab">Sign Up</a>
+        <a id="sign-up" role="tab" data-toggle="tab" class="authentication-buttons" href="#sign-up-tab">Sign Up</a>
       </li>
       <li class="nav-item">
-        <a id="sign-in" role="tab" data-toggle="tab" class="buttons-style nav-link active" href="#sign-in-tab">Sign In</a>
+        <a id="sign-in" role="tab" data-toggle="tab" class="authentication-buttons" href="#sign-in-tab">Sign In</a>
       </li>
     </ul>
   </div>

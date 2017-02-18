@@ -18,9 +18,9 @@ Meteor.methods({
       "Unexpected",
       "Trump Memes",
       "Selfie"
-    ]
+    ];
     var n= round(Math.random() * cat.length);
-    var newcat = cat[]
+    var newcat = cat[n];
     Battles.insert({
       challenger: Meteor.userId(),
       opponent: Meteor.users.findOne({"username": opponent})._id,
