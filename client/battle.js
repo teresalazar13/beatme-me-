@@ -8,15 +8,29 @@ Template.battle.helpers({
   },
 
   roundNumber: function() {
-    var array = Battles.findOne({"_id": this._id}).categories;
+    var array = this.categories;
     return array.length;
   },
 
   category: function() {
-    var catArray = Battles.findOne({"_id": this._id}).categories;
+    var catArray = this.categories;
     return catArray[catArray.length-1];
   },
 
+  round: function() {
+    memes = this.memes;
+    var rounds = [];
+    for (var i = 0; i < memes.length; i = i + 2) {
+      memeA = Memes.findOne({"_id": memes[i]});
+      memeB = Memes.findOne({"_id": memes[i + 1]});
+      rounds.push([memeA, memeB]);
+    }
+    return rounds;
+  }
+});
+
+
+Template.battle.events({
   'click .meme-submit': function(event) {
     event.preventDefault();
     var e = document.getElementById('meme-template');

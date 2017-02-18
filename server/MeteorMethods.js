@@ -27,7 +27,7 @@ Meteor.methods({
       challengerVotes: 0,
       opponentVotes: 0,
       accepted: false,
-      categories:[newcat],
+      categories: [newcat],
       teresa: 0,
       memes: [],
       createdAt: new Date()
@@ -40,12 +40,6 @@ Meteor.methods({
 
   'vote.opponent': function(battle) {
     Battles.update(battle, { $inc: { opponentVotes: 1 } });
-  },
-
-  'battles.addmeme': function(battle,meme,user,cat){
-    var memeArray = Battles.find(battle).memes;
-    memeArray.push([meme,user]);
-    Battles.update(battle, {$set:{memes: memeArray}});
   },
 
   //VERIFICA SE É NECESSARIO NOVA CATEGORIA E SE FOR ADICIONA
@@ -66,7 +60,7 @@ Meteor.methods({
       ];
       var newcat  = cat.random();
       catArray.push(newcat);
-      Battles.update(battle, {$set:{categories: memeArray}});
+      Battles.update(battle, { $set: {categories: memeArray} });
     }
   },
 
@@ -79,11 +73,14 @@ Meteor.methods({
   },
 
   'battle.memes.insert': function(url, battle) {
-    var meme = Memes.insert({
+    var meme_id = Memes.insert({
       url: url,
       user: Meteor.userId(),
       createdAt: new Date()
-    })._id;
-    // Falta adicionar meme a batalha
+    });
+    console.log(meme_id);
+    Battles.update({
+      _id: battle}, { $push: {memes: meme_id} }
+    );
   }
 });
