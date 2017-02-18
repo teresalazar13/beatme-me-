@@ -3,25 +3,32 @@
 </head>
 
 <template name="main">
-  <h1>Welcome to beatme(me)</h1>
-  <div class="dropdown">
-    <select name="memetemplate" id="memetemplate">
-      <option value="default">Choose a used template</option>
-      <option value="tenguy">Ten Guy</option>
-      <option value="fry">Confused Fry</option>
-      <option value="ch">Captain Hindsight</option>
-      <option value="yodawg">Xzibit</option>
-    </select>
+  <div class="container-fluid">
+    <h1 class="main-title">Welcome to beatme(me)</h1>
+    <div class="submit-meme">
+      <p class="main-submit-text">Submit a meme</p>
+      <select class="main-select" name="meme-template" id="meme-template">
+        <option value="default">Choose a used template</option>
+        <option value="tenguy">Ten Guy</option>
+        <option value="fry">Confused Fry</option>
+        <option value="ch">Captain Hindsight</option>
+        <option value="yodawg">Xzibit</option>
+      </select>
+      <form class="submit">
+        <input type="text" name="urltext" placeholder="Image URL" class="form-control main-inputs" id="urltext"/>
+        <input type="text" name="toptext" placeholder="Top text" class="form-control main-inputs" id="toptext"/>
+        <input type="text" name="bottomtext" placeholder="Bottom text" class="form-control main-inputs" id="bottomtext"/>
+        <button id="main-button-submit" type="button" class="btn btn-default meme-submit">
+          Submit
+        </button>
+        <button id="main-button-submit" type="button" class="btn btn-default meme-preview">
+          Preview Meme
+        </button>
+      </form>
+      <img class="preview-meme" src="{{sourcePreview}}" alt="">
+    </div>
+    {{#each memes}}
+      {{> meme}}
+    {{/each}}
   </div>
-  <form class="submit">
-    <input type="text" name="urltext" placeholder="Image URL" class="form-control" id="urltext"/>
-    <input type="text" name="toptext" placeholder=">TOP TEXT" class="form-control" id="toptext"/>
-    <input type="text" name="bottomtext" placeholder="BOTTOM TEXT" class="form-control" id="bottomtext"/>
-    <button type="button" class="meme-submit">
-      Submit
-    </button>
-  </form>
-  {{#each memes}}
-    {{> meme}}
-  {{/each}}
 </template>
