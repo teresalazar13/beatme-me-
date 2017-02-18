@@ -4,9 +4,13 @@
 
 <template name="main">
   <div class="container-fluid">
-    <h1 class="main-title">Welcome to beatme(me)</h1>
+
     <div class="submit-meme">
+      <!--<h1 class="main-title">Welcome to beatme(me)</h1>-->
       <p class="main-submit-text">Submit a meme</p>
+      <button id="choice1" class="temp">Use template</button>
+      <button id="choice2" class="url">Insert URL</button>
+      {{#if choice}}
       <select class="main-select" name="meme-template" id="meme-template">
         <option value="default">Choose a used template</option>
         <option value="tenguy">Ten Guy</option>
@@ -14,8 +18,11 @@
         <option value="ch">Captain Hindsight</option>
         <option value="yodawg">Xzibit</option>
       </select>
+      {{/if}}
       <form class="submit">
-        <input type="text" name="urltext" placeholder="Image URL" class="form-control main-inputs" id="urltext"/>
+        {{#unless choice}}
+          <input type="text" name="urltext" placeholder="Image URL" class="form-control main-inputs" id="urltext"/>
+        {{/unless}}
         <input type="text" name="toptext" placeholder="Top text" class="form-control main-inputs" id="toptext"/>
         <input type="text" name="bottomtext" placeholder="Bottom text" class="form-control main-inputs" id="bottomtext"/>
         <button id="main-button-submit" type="button" class="btn btn-default meme-submit">
@@ -31,4 +38,5 @@
       {{> meme}}
     {{/each}}
   </div>
+
 </template>
