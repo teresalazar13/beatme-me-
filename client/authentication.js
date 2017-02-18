@@ -7,9 +7,6 @@ Template.authentication.events({
         if (err) {
           console.log(err.reason);
         }
-        else {
-          Router.go("/");
-        }
       });
     }
     currentTab = 'sign_in';
@@ -21,7 +18,6 @@ Template.authentication.events({
           username: $('#sign-up-tab').find('#username-input').val(),
           password: $('#sign-up-tab').find('#password-input').val()
       });
-      Router.go("/");
     }
     currentTab = 'sign_up';
   }
