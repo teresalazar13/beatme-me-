@@ -1,9 +1,0 @@
-<template name="accept">
-	<h2>Battles waiting to be accepted</h2>
-	{{#each unaccepted}}
-		<p>{{this.challenger}}</p>
-		<p>{{this.createdAt}}</p>
-		<button class="acceptBattle">Accept</button>
-		<button class="rejectBattle">Delete</button>
-	{{/each}}
-</template>

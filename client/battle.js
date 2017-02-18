@@ -5,13 +5,32 @@ Template.battle.helpers({
 
   opponentUsername: function() {
     return Meteor.users.findOne({"_id": this.opponent}).username;
-  }
-  roundNumber: function(){
-    return Meteor.battles.find({"_id": this._id}).length;
-  }
-  category: function(){
-    var catArray = Meteor.battles.find({"_id": this._id}).categories;
-    return catArray[catArray.length-1];
-  }
+  },
 
+  roundNumber: function() {
+    var array = Battles.findOne({"_id": this._id}).categories;
+    return array.length;
+  },
+
+  category: function() {
+    var catArray = Battles.findOne({"_id": this._id}).categories;
+    return catArray[catArray.length-1];
+  },
+
+  'click .meme-submit': function(event) {
+    event.preventDefault();
+    var e = document.getElementById('meme-template');
+    var select = e.options[e.selectedIndex].value;
+    var toptext = document.getElementById("toptext").value;
+    var bottomtext = document.getElementById("bottomtext").value;
+    var urltext = document.getElementById("urltext").value;
+    var url = null;
+    if (select == "default") {
+      url = "https://memegen.link/custom/" + toptext + "/" + bottomtext+ ".jpg?alt=" + urltext;
+    }
+    else {
+      url = "https://memegen.link/" + select + "/" + toptext + "/" + bottomtext + ".jpg";
+    }
+    Meteor.call('battle.memes.insert', url, this._id);
+  }
 });

@@ -1,9 +1,29 @@
 <template name="battle">
-	<h2>
-		{{challengerUsername}}
-		versus
-		{{opponentUsername}}
-	</h2>
-	<p>{{roundNumber}}</p>
-	<p>{{category}}</p>
+  <h1>Battle</h1>
+  <p>{{challengerUsername}}
+    versus
+    {{opponentUsername}}</p>
+  <p>{{roundNumber}}
+    ->
+    {{category}}</p>
+  <div class="submit-meme">
+    <p class="main-submit-text">It's yout turn to submit a meme</p>
+    <select class="main-select" name="meme-template" id="meme-template">
+      <option value="default">Choose a used template</option>
+      <option value="tenguy">Ten Guy</option>
+      <option value="fry">Confused Fry</option>
+      <option value="ch">Captain Hindsight</option>
+      <option value="yodawg">Xzibit</option>
+    </select>
+    <form class="submit">
+      <input type="text" name="urltext" placeholder="Image URL" class="form-control main-inputs" id="urltext"/>
+      <input type="text" name="toptext" placeholder="Top text" class="form-control main-inputs" id="toptext"/>
+      <input type="text" name="bottomtext" placeholder="Bottom text" class="form-control main-inputs" id="bottomtext"/>
+      <button id="main-button-submit" type="button" class="btn btn-default meme-submit">
+        Submit
+      </button>
+    </form>
+    <img class="preview-meme" src="{{sourcePreview}}" alt="">
+  </div>
+
 </template>

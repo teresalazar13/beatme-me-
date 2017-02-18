@@ -1,0 +1,12 @@
+<template name="accept">
+	<h2 style="color: blue">Battles waiting to be accepted</h2>
+	{{#each unacceptedBattles}}
+		{{> battlePreview}}
+		<button class="acceptBattle">Accept</button>
+		<button class="rejectBattle">Delete</button>
+	{{/each}}
+	<h2 style="color: blue">Ongoing battles</h2>
+	{{#each acceptedBattles}}
+		{{> battlePreview}}
+	{{/each}}
+</template>

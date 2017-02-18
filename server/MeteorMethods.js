@@ -19,7 +19,7 @@ Meteor.methods({
       "Trump Memes",
       "Selfie"
     ];
-    var n= round(Math.random() * cat.length);
+    var n = Math.round(Math.random() * cat.length);
     var newcat = cat[n];
     Battles.insert({
       challenger: Meteor.userId(),
@@ -41,11 +41,13 @@ Meteor.methods({
   'vote.opponent': function(battle) {
     Battles.update(battle, { $inc: { opponentVotes: 1 } });
   },
+
   'battles.addmeme': function(battle,meme,user,cat){
     var memeArray = Battles.find(battle).memes;
     memeArray.push([meme,user]);
     Battles.update(battle, {$set:{memes: memeArray}});
-  }
+  },
+
   //VERIFICA SE É NECESSARIO NOVA CATEGORIA E SE FOR ADICIONA
   'battles.newcat': function(battle){
     var memeArray = Battles.find(battle).memes;
@@ -61,17 +63,27 @@ Meteor.methods({
         "Unexpected",
         "Trump Memes",
         "Selfie"
-      ]
+      ];
       var newcat  = cat.random();
       catArray.push(newcat);
       Battles.update(battle, {$set:{categories: memeArray}});
     }
-  }
+  },
+
   'battles.start': function(battle) {
     Battles.update(battle, { $set: { accepted: true } });
   },
 
-  'battle.delete': function(battle){
+  'battles.delete': function(battle){
     Battles.remove(battle);
+  },
+
+  'battle.memes.insert': function(url, battle) {
+    var meme = Memes.insert({
+      url: url,
+      user: Meteor.userId(),
+      createdAt: new Date()
+    })._id;
+    // Falta adicionar meme a batalha
   }
 });

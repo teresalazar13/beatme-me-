@@ -1,7 +1,11 @@
 Template.accept.helpers({
-	unaccepted: function(){
+	unacceptedBattles: function(){
 		return Battles.find({ $and: [{ opponent: Meteor.userId() }, { accepted: false }] });
-	}
+	},
+
+	acceptedBattles: function() {
+		return Battles.find({ $and: [{ opponent: Meteor.userId() }, { accepted: true }] });
+	},
 });
 
 Template.accept.events({
