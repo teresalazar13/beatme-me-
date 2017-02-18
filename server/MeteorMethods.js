@@ -27,9 +27,8 @@ Meteor.methods({
       challengerVotes: 0,
       opponentVotes: 0,
       accepted: false,
-      categories: [newcat],
+      rounds: [{category: newcat, challenger: null,  opponent: null}],
       teresa: 0,
-      memes: [],
       createdAt: new Date()
     });
   },
@@ -78,9 +77,15 @@ Meteor.methods({
       user: Meteor.userId(),
       createdAt: new Date()
     });
-    console.log(meme_id);
+    var rounds = Battles.findOne({"_id": battle}).rounds;
+    var property = null;
+    if (Meteor.userId() == Battles.findOne({"_id": battle}).challenger)
+      property = "challenger";
+    else
+      property = "opponent";
+    rounds[rounds.length - 1][property] = url;
     Battles.update({
-      _id: battle}, { $push: {memes: meme_id} }
+      _id: battle}, { $set: {rounds: rounds} }
     );
   }
 });

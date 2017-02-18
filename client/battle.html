@@ -2,10 +2,8 @@
   <h1>Battle</h1>
   <p>{{challengerUsername}}
     versus
-    {{opponentUsername}}</p>
-  <p>{{roundNumber}}
-    ->
-    {{category}}</p>
+    {{opponentUsername}}
+  </p>
   <div class="submit-meme">
     <p class="main-submit-text">It's yout turn to submit a meme</p>
     <select class="main-select" name="meme-template" id="meme-template">
@@ -25,10 +23,12 @@
     </form>
     <img class="preview-meme" src="{{sourcePreview}}" alt="">
   </div>
-  {{#each round}}
-    {{#each this}}
-      {{> meme}}
-    {{/each}}
+  {{#each rounds}}
+    <img src="{{opponent}}">
+    <br>
+    {{category}}
+    <br>
+    <img src="{{challenger}}">
   {{/each}}
 
 </template>

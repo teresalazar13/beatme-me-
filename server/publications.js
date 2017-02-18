@@ -8,6 +8,15 @@ Meteor.publish("memes", function() {
 
 Meteor.publish("battles", function() {
   return Battles.find({}, {
+    fields: {
+      "opponent": true,
+      "challenger": true,
+      "category": true,
+      "accepted": true,
+      "rounds": true,
+      "challengerVotes" : true,
+	    "opponentVotes": true,
+    },
     sort: {
       createdAt: -1
     }

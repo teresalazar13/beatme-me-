@@ -6,27 +6,6 @@ Template.battle.helpers({
   opponentUsername: function() {
     return Meteor.users.findOne({"_id": this.opponent}).username;
   },
-
-  roundNumber: function() {
-    var array = this.categories;
-    return array.length;
-  },
-
-  category: function() {
-    var catArray = this.categories;
-    return catArray[catArray.length-1];
-  },
-
-  round: function() {
-    memes = this.memes;
-    var rounds = [];
-    for (var i = 0; i < memes.length; i = i + 2) {
-      memeA = Memes.findOne({"_id": memes[i]});
-      memeB = Memes.findOne({"_id": memes[i + 1]});
-      rounds.push([memeA, memeB]);
-    }
-    return rounds;
-  }
 });
 
 
