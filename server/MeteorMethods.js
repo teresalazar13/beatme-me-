@@ -19,18 +19,18 @@ Meteor.methods({
   },
 
   'vote.challenger': function(battle) {
-    Battle.update(battle, { $inc: { challengerVotes: 1 } });
+    Battles.update(battle, { $inc: { challengerVotes: 1 } });
   },
 
   'vote.opponent': function(battle) {
-    Battle.update(battle, { $inc: { opponentVotes: 1 } });
+    Battles.update(battle, { $inc: { opponentVotes: 1 } });
   },
 
   'battles.start': function(battle) {
-    Battle.update(battle, { $set: { accepted: true } });
+    Battles.update(battle, { $set: { accepted: true } });
   },
 
   'battle.delete': function(battle){
-    Battle.remove(battle);
+    Battles.remove(battle);
   }
 });
