@@ -1,0 +1,10 @@
+<template name="battles">
+  <h1>Battles</h1>
+  <input type="text" name="battleuser" placeholder="Username of the user you want to battle(Leave blank for a random match)" class="form-control" id="battle-user"/>
+  <button type="button" class="battle-submit">
+    Invite for Battle
+  </button>
+  {{#each battlesList}}
+    {{> battle}}
+  {{/each}}
+</template>

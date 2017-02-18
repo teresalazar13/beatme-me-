@@ -5,3 +5,23 @@ Meteor.publish("memes", function() {
     }
   });
 });
+
+Meteor.publish("battles", function() {
+  return Battles.find({}, {
+    sort: {
+      createdAt: -1
+    }
+  });
+});
+
+Meteor.publish("usersData", function() {
+    if (this.userId) {
+      return Meteor.users.find({}, {
+        fields: {
+          "username": true,
+        }
+      });
+    } else {
+      this.ready();
+    }
+});

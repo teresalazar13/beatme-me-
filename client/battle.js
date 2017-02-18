@@ -1,18 +1,13 @@
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
+Template.battle.helpers({
+  challengerUsername: function() {
+    return Meteor.users.findOne({"_id": this.challenger}).username;
+  },
 
-import './battle.html';
+  opponentUsername: function() {
+    console.log(this.opponent);
+    console.log( Meteor.users.findOne({"_id": this.opponent}));
 
-
-Template.newbattle.events({
-	'click .memesubmit': function(event){
-		var user =document.getElementById("battleuser").value;
-		var opponent
-		if(user != null){
-			//RANDOM
-		}else{
-			 opponent = Meteor.call('users.findID',username);
-		}
-		Meteor.call('battles.invite',opponent);
-	}
+    //console.log(Meteor.users.findOne({"_id": }));
+    return Meteor.users.findOne({"_id": this.opponent}).username;
+  }
 });
