@@ -1,10 +1,12 @@
 <template name="leaderboard">
+	<p class="leaderboard-quote">"If you are not the memer, you are the memed."</p>
+	<hr class="leaderboard-hr">
 	<table class="leader-table">
 		{{#each users}}
 		<tr>
 			<td>{{position}}</td>
 			<td class="leaderboard-username">{{username}}</td>
-			<td class="leaderboard-victories">{{victories}}</td>
+			<td class="leaderboard-victories"><strong>{{victories}}</strong></td>
 		</tr>
 		{{/each}}
 	</table>
