@@ -4,8 +4,14 @@ Template.accept.helpers({
 	},
 
 	acceptedBattles: function() {
-		return Battles.find({ $and: [{ opponent: Meteor.userId() }, { accepted: true }] });
+		return Battles.find({$or:[{ $and: [{ challenger: Meteor.userId() }, { accepted: true }]},{ $and: [{ opponent: Meteor.userId() }, { accepted: true }] }]});
 	},
+	challengerUsername: function() {
+    return Meteor.users.findOne({"_id": this.challenger}).username;
+  },
+	opponentUsername: function() {
+    return Meteor.users.findOne({"_id": this.opponent}).username;
+  }
 });
 
 Template.accept.events({

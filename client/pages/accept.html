@@ -1,28 +1,36 @@
 <template name="accept">
-	<h2 style="color: blue">Battles waiting to be accepted</h2>
-	{{#each unacceptedBattles}}
-		<a href="/battle/{{_id}}" class="battle-preview-text">
-			<p>
-				<strong>{{challengerUsername}}</strong>
-				versus
-				<strong>{{opponentUsername}}</strong>
-			</p>
-		</a>
-		<p>{{roundNumber}}</p>
-		<p>{{category}}</p>
-		<button class="acceptBattle">Accept</button>
-		<button class="rejectBattle">Delete</button>
-	{{/each}}
-	<h2 style="color: blue">Ongoing battles</h2>
-	{{#each acceptedBattles}}
-		<a href="/battle/{{_id}}" class="battle-preview-text">
-			<p>
-				<strong>{{challengerUsername}}</strong>
-				versus
-				<strong>{{opponentUsername}}</strong>
-			</p>
-		</a>
-		<p>{{roundNumber}}</p>
-		<p>{{category}}</p>
-	{{/each}}
+	<div class="profile-battle-info">
+		<div class="profile-waiting-div col-md-4">
+			<p class="profile-waiting-title">Battles waiting to be accepted</p>
+			<hr class="profile-waiting-hr">
+			{{#each unacceptedBattles}}
+				<a href="/battle/{{_id}}" class="battle-preview-text">
+					<p>
+						<strong>{{challengerUsername}}</strong>
+						versus
+						<strong>{{opponentUsername}}</strong>
+					</p>
+				</a>
+				<p>{{roundNumber}}</p>
+				<p>{{category}}</p>
+				<button class="acceptBattle">Accept</button>
+				<button class="rejectBattle">Delete</button>
+			{{/each}}
+		</div>
+		<div class="profile-ongoing-div col-md-4">
+			<p class="profile-ongoing-title">Ongoing battles</p>
+			<hr class="profile-ongoing-hr">
+			{{#each acceptedBattles}}
+				<a href="/battle/{{_id}}" class="battle-preview-text">
+					<p>
+						<strong>{{challengerUsername}}</strong>
+						versus
+						<strong>{{opponentUsername}}</strong>
+					</p>
+				</a>
+				<p>{{roundNumber}}</p>
+				<p>{{category}}</p>
+			{{/each}}
+		</div>
+	</div>
 </template>

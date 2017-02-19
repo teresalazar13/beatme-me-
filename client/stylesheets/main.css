@@ -1,6 +1,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	font-family: 'Nunito', sans-serif;
 }
 
 .hr-main {
@@ -24,9 +25,9 @@
 
 .authentication-body {
   margin: auto;
-  margin-top: 8%;
+  margin-top: 5%;
   text-align: center;
-  font-family: Avenir;
+  font-family: 'Nunito', sans-serif;
 }
 
 .authentication-body-description {
@@ -112,18 +113,23 @@ ul li .authentication-buttons:hover{
 
 #logout {
 	background-color: rgba(163,46,46,0.6);
+	padding: 6px 12px;
+	border-radius: 5px;
+	margin-top:15%;
+	color: white;
 }
 
 .main-title {
-  font-family: Helvetica;
+  font-family: 'Nunito', sans-serif;
   text-align: center;
 	margin-top: 4%;
 	font-weight: 100;
-	color: #333; font-size: 48px; font-family: 'Signika', sans-serif; padding-bottom: 10px;
+	color: #333; font-size: 48px; font-family: 'Nunito', sans-serif;
+	padding-bottom: 10px;
 }
 
 .main-submit-text {
-  font-family: Helvetica;
+  font-family: 'Nunito', sans-serif;
   font-size: 25px;
 }
 
@@ -135,7 +141,7 @@ ul li .authentication-buttons:hover{
 
 .main-inputs {
   margin-top: 0.6%;
-  border: 1px solid #333;
+  border: 1px solid lightgrey;
   outline: 0;
 }
 
@@ -275,7 +281,7 @@ ul li .authentication-buttons:hover{
 
 .profile-title {
   font-size: 30px;
-  font-family: Avenir;
+  font-family: 'Nunito', sans-serif;
 }
 
 .profile-image {
@@ -312,7 +318,7 @@ ul li .authentication-buttons:hover{
 	color: rgb(163,46,46);
 	font-weight: 500;
 	margin-bottom: -0.6%;
-	font-family: Avenir;
+	font-family: 'Nunito', sans-serif;
 }
 
 .battles-hr {
@@ -341,7 +347,7 @@ ul li .authentication-buttons:hover{
 .glyphicon-arrow-down {
 	padding:10px;
 	border-radius:5px;
-	background-color:black;
+	background-color:#333;
 	color:white;
   margin-right: 1%;
 }
@@ -354,5 +360,54 @@ table td {
 	padding: 4px 0;
 }
 
-.profile-battles {
+.profile-waiting-title {
+	color: rgb(163,46,46);
+	font-size: 23px;
+}
+.profile-waiting-hr {
+	border-bottom: 5px solid rgb(163,46,46);
+	width: 80%;
+	margin-top:0;
+}
+
+.profile-ongoing-title {
+	color: #333;
+	font-size: 23px;
+}
+.profile-ongoing-hr {
+	border-bottom: 5px solid #333;
+	width: 55%;
+	margin-top:0;
+}
+
+.profile-battle-info {
+	margin-left: 4%;
+	margin-top: 4%;
+}
+
+.acceptBattle {
+	padding: 5px 11px;
+	background-color: rgb(163,46,46);
+	color: white;
+	border-radius: 5px;
+	border: 1px solid rgb(163,46,46);
+	margin-right: 5px;
+}
+.rejectBattle {
+	padding: 5px 11px;
+	background-color: #333;
+	color: white;
+	border-radius: 5px;
+	border: 1px solid #333;
+}
+
+.profile-challenge {
+	display: inline;
+}
+.profile-memes {
+	margin-top:5%;
+}
+
+.leader-table {
+	margin:0 auto;
 }

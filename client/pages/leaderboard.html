@@ -1,5 +1,11 @@
 <template name="leaderboard">
-{{#each leaderboard}}
-	<p>{{username}}</p><p>{{victories}}</p>
-{{/each}}
+	<table class="leader-table">
+		{{#each users}}
+		<tr>
+			<td>{{position}}</td>
+			<td class="leaderboard-username">{{username}}</td>
+			<td class="leaderboard-victories">{{victories}}</td>
+		</tr>
+		{{/each}}
+	</table>
 </template>
