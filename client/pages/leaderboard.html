@@ -3,11 +3,13 @@
 	<hr class="leaderboard-hr">
 	<table class="leader-table">
 		{{#each users}}
-		<tr>
-			<td>{{position}}</td>
-			<td class="leaderboard-username">{{username}}</td>
-			<td class="leaderboard-victories"><strong>{{victories}}</strong></td>
-		</tr>
+			<tr>
+				<td>{{this.index}}</td>
+				<td class="leaderboard-username">{{username}}</td>
+				<td class="leaderboard-victories">
+					<strong>{{victories}}</strong>
+				</td>
+			</tr>
 		{{/each}}
 	</table>
 </template>

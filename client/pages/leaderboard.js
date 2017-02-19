@@ -1,16 +1,11 @@
 Template.leaderboard.helpers({
-	users: function(){
-		return Meteor.users.find({},{$sort: {victories: 1}});
+	users: function() {
+		var items = Meteor.users.find({}, {sort: {victories: -1}}).map(function(doc, index, cursor) {
+			var i = _.extend(doc, {index: 1 + index});
+			var user = doc._id;
+			var position =  1 + index;
+			return i;
+		});
+		return items;
 	},
-	username: function(){
-		return this.username;
-	},
-	victories: function(){
-		 return this.victories;
- },
- position: function(){
-	 var aux = Meteor.users.find({},{$sort: {victories: 1}});
-	 var index = aux.indexOf(this);
-	 return index +1;
- }
 });
