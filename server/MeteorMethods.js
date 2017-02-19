@@ -137,8 +137,6 @@ Meteor.methods({
       var n = Math.round(Math.random() * cat.length);
       var newcat = cat[n];
       Battles.update({"_id": battle}, { $push: {rounds: {category: newcat, challenger: null,  opponent: null}} });
-    }if (lastRound.opponent !== null && lastRound.challenger !== null && (rounds.length == 3)){
-      Battle.update({"_id": battle}, {$set: {finished: true}});
     }
   }
 });

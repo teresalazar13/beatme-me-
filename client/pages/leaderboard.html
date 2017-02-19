@@ -4,7 +4,17 @@
 	<table class="leader-table">
 		{{#each users}}
 			<tr>
-				<td>{{this.index}}</td>
+				{{#if cena}}
+				  {{#if winner}}
+					<td class="leaderboard-ranking-winner">{{this.index}}</td>
+						{{/if}}
+						{{#unless winner}}
+						<td class="leaderboard-ranking-top">{{this.index}}</td>
+							{{/unless}}
+				{{/if}}
+				{{#unless cena}}
+					<td class="leaderboard-ranking">{{this.index}}</td>
+				{{/unless}}
 				<td class="leaderboard-username">{{username}}</td>
 				<td class="leaderboard-victories">
 					<strong>{{victories}}</strong>
