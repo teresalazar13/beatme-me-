@@ -1,3 +1,6 @@
+Session.setDefault("urltext", "");
+Session.setDefault("use-url", true);
+
 Template.battle.helpers({
   challengerUsername: function() {
     return Meteor.users.findOne({"_id": this.challenger}).username;
@@ -60,7 +63,7 @@ Template.battle.helpers({
   shittyHelper: function() {
     var now = new Date();
     var difTime = now - this.createdAt;
-    if (difTime > 2000) {
+    if (difTime > 2000000) {
       if (! this.finished) {
         Meteor.call("battle.finish", this, function(error, result) {
           if (result == "challenger") {
@@ -88,6 +91,10 @@ Template.battle.helpers({
         }
       }
     }
+  },
+
+  use_url: function () {
+    return Session.get("use-url");
   }
 });
 
@@ -99,9 +106,10 @@ Template.battle.events({
     var select = e.options[e.selectedIndex].value;
     var toptext = document.getElementById("toptext").value;
     var bottomtext = document.getElementById("bottomtext").value;
-    var urltext = document.getElementById("urltext").value;
     var url = null;
+    var urltext = null;
     if (select == "default") {
+      urltext = document.getElementById("urltext").value;
       url = "https://memegen.link/custom/" + toptext + "/" + bottomtext+ ".jpg?alt=" + urltext;
     }
     else {
@@ -128,5 +136,21 @@ Template.battle.events({
     else {
       Meteor.call('remove.vote.opponent', this);
     }
+  },
+
+  'click #use-template': function(event) {
+    Session.set("use-url", false);
+    var button1 = document.getElementById("use-template");
+    var button2 = document.getElementById("use-url");
+    button1.setAttribute("style","background-color:#333; color:white");
+    button2.setAttribute("style","background-color:white; color:#333");
+  },
+
+  'click #use-url': function(event) {
+    Session.set("use-url", true);
+    var button1 = document.getElementById("use-template");
+    var button2 = document.getElementById("use-url");
+    button1.setAttribute("style","background-color:white;");
+    button2.setAttribute("style","background-color:#333; ");
   }
 });

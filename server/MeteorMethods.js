@@ -35,26 +35,32 @@ Meteor.methods({
 
   'battle.finish': function(battle) {
     Battles.update({"_id":battle._id}, {$set: {finished: true}});
-    console.log(Meteor.users.findOne({"_id": battle.opponent}));
-    console.log(Meteor.users.findOne({"_id": battle.challenger}));
-
+    var date = new Date();
+    var date_after_day = date + 60 * 60 * 24 * 1000 + 987532867;
     if (battle.opponentVotes.length > battle.challengerVotes.length) {
-      Meteor.users.update({"_id": battle.opponent}, { $inc: {victories: 1} });
-      Meteor.users.update({"_id": battle.challenger}, { $inc: {defeats: 1} });
-      console.log(Meteor.users.findOne({"_id": battle.opponent}));
-      console.log(Meteor.users.findOne({"_id": battle.challenger}));
-      return "opponent";
+      Meteor.users.update({"_id": battle.opponent}, { $push: {victories: date} });
+      Meteor.users.update({"_id": battle.challenger}, { $push: {defeats: date} });
+      if (Meteor.users.findOne({"_id": battle.opponent}).victories_length === 0) {
+        Meteor.users.update({"_id": battle.opponent}, { $push: {victories: date_after_day} });
+        Meteor.users.update({"_id": battle.opponent}, { $inc: {victories_length: 1} });
+      }
+      else {
+        Meteor.users.update({"_id": battle.opponent}, { $inc: {victories_length: 1} });
+      }      return "opponent";
     }
-    else if (battle.opponentVotes.length < battle.challengerVotes.length){
-      Meteor.users.update({"_id": battle.challenger}, { $inc: {victories: 1} });
-      Meteor.users.update({"_id": battle.opponent}, { $inc: {defeats: 1} });
-      console.log(Meteor.users.findOne({"_id": battle.opponent}));
-      console.log(Meteor.users.findOne({"_id": battle.challenger}));
+    else if (battle.opponentVotes.length < battle.challengerVotes.length) {
+      Meteor.users.update({"_id": battle.challenger}, { $push: {victories: date} });
+      Meteor.users.update({"_id": battle.opponent}, { $push: {defeats: date} });
+      if (Meteor.users.findOne({"_id": battle.challenger}).victories_length === 0) {
+        Meteor.users.update({"_id": battle.challenger}, { $push: {victories: date_after_day} });
+        Meteor.users.update({"_id": battle.challenge}, { $inc: {victories_length: 1} });
+      }
+      else {
+        Meteor.users.update({"_id": battle.challenge}, { $inc: {victories_length: 1} });
+      }
       return "challenger";
     }
     else {
-      console.log(Meteor.users.findOne({"_id": battle.opponent}));
-      console.log(Meteor.users.findOne({"_id": battle.challenger}));
       return "tie";
     }
   },

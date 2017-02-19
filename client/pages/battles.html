@@ -9,7 +9,6 @@
     <div class="battles-ongoing">
       <p class="battles-ongoing-text">Ongoing battles</p>
       <hr class="battles-hr">
-
       {{#each battlesListOngoing}}
         <a href="/battle/{{_id}}" class="battle-preview-text">
           <p>
@@ -21,9 +20,7 @@
         <p>{{roundNumber}}</p>
         <p>{{category}}</p>
       {{/each}}
-
     </div>
-
     <div class="battles-ongoing">
       <p class="battles-ongoing-text">Finished battles</p>
       <hr class="battles-hr">
@@ -53,7 +50,6 @@
           </tr>
         {{/each}}
       </table>
-
     </div>
   </div>
 </template>
