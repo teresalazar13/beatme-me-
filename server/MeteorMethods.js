@@ -28,39 +28,25 @@ Meteor.methods({
       opponentVotes: [],
       accepted: false,
       rounds: [{category: newcat, challenger: null,  opponent: null}],
-      teresa: 0,
       createdAt: new Date()
     });
   },
 
   'vote.challenger': function(battle) {
-    console.log("vote");
-    console.log(battle);
-    var votes = battle.challengerVotes;
-    votes.push(Meteor.userId());
-      Battles.update({"_id":battle}, { $push: {challengerVotes: Meteor.userId()} });
-      console.log(battle);
-      if(battle.opponentVotes.indexOf(Meteor.userId())!=-1){
-        console.log("voto duplo");
-      /*  votes = battle.opponentVotes;
-        votes.slice(votes.indexOf(battle),1);*/
-        Battles.update({"_id":battle}, { $pull : { opponentVotes: Meteor.userId() } });
-      }
+    Battles.update({"_id": battle._id}, { $push: {challengerVotes: Meteor.userId()} });
+  },
+
+  'remove.vote.challenger': function(battle) {
+    Battles.update({"_id": battle._id}, { $pull : { challengerVotes: Meteor.userId() } });
   },
 
   'vote.opponent': function(battle) {
-      console.log("vote");
-      console.log(battle);
-      var votes = battle.challengerVotes;
-      Battles.update({"_id":battle}, { $push : { opponentVotes: Meteor.userId() } });
-      console.log(battle);
-      if(battle.challengerVotes.indexOf(Meteor.userId())!=-1){
-        console.log("voto duplo");
-      /*  votes = battle.challengerVotes;
-        votes.slice(votes.indexOf(battle),1);*/
-        Battles.update({"_id":battle}, { $pull: { challengerVotes: Meteor.userId() } });
-      }
-    },
+    Battles.update({"_id": battle._id}, { $push : { opponentVotes: Meteor.userId() } });
+  },
+
+  'remove.vote.opponent': function(battle) {
+    Battles.update({"_id": battle._id}, { $pull : { opponentVotes: Meteor.userId() } });
+  },
 
   //VERIFICA SE É NECESSARIO NOVA CATEGORIA E SE FOR ADICIONA
   'battles.newcat': function(battle){

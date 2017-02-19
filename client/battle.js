@@ -5,6 +5,20 @@ Template.battle.helpers({
 
   opponentUsername: function() {
     return Meteor.users.findOne({"_id": this.opponent}).username;
+  },
+
+  votedChallenger: function() {
+    if (this.challengerVotes.indexOf(Meteor.userId()) != -1) {
+      return true;
+    }
+    return false;
+  },
+
+  votedOpponent: function() {
+    if (this.opponentVotes.indexOf(Meteor.userId()) != -1) {
+      return true;
+    }
+    return false;
   }
 });
 
@@ -26,22 +40,24 @@ Template.battle.events({
     }
     Meteor.call('battle.memes.insert', url, this._id);
   },
+
   'click .challenger-vote': function(event){
     event.preventDefault();
-    if(this.challengerVotes.indexOf(Meteor.userId())==-1){
-      Meteor.call('vote.challenger',this);
+    if(this.challengerVotes.indexOf(Meteor.userId()) == -1) {
+      Meteor.call('vote.challenger', this);
     }
-    else
-      alert("Already voted for the challenger");
-
+    else {
+      Meteor.call('remove.vote.challenger', this);
+    }
   },
+
   'click .opponent-vote': function(event){
     event.preventDefault();
-    if(this.opponentVotes.indexOf(Meteor.userId())==-1){
-      alert("Oi opp");
-      Meteor.call('vote.opponent',this);
-    }else{
-      alert("Already voted for the opponent");
+    if(this.opponentVotes.indexOf(Meteor.userId()) == -1) {
+      Meteor.call('vote.opponent', this);
+    }
+    else {
+      Meteor.call('remove.vote.opponent', this);
     }
   }
 });

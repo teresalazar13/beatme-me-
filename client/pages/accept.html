@@ -1,12 +1,28 @@
 <template name="accept">
 	<h2 style="color: blue">Battles waiting to be accepted</h2>
 	{{#each unacceptedBattles}}
-		{{> battlePreview}}
+		<a href="/battle/{{_id}}" class="battle-preview-text">
+			<p>
+				<strong>{{challengerUsername}}</strong>
+				versus
+				<strong>{{opponentUsername}}</strong>
+			</p>
+		</a>
+		<p>{{roundNumber}}</p>
+		<p>{{category}}</p>
 		<button class="acceptBattle">Accept</button>
 		<button class="rejectBattle">Delete</button>
 	{{/each}}
 	<h2 style="color: blue">Ongoing battles</h2>
 	{{#each acceptedBattles}}
-		{{> battlePreview}}
+		<a href="/battle/{{_id}}" class="battle-preview-text">
+			<p>
+				<strong>{{challengerUsername}}</strong>
+				versus
+				<strong>{{opponentUsername}}</strong>
+			</p>
+		</a>
+		<p>{{roundNumber}}</p>
+		<p>{{category}}</p>
 	{{/each}}
 </template>

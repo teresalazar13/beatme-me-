@@ -29,14 +29,35 @@
     {{category}}
     <br>
     <img src="{{challenger}}">
+    <h2>Your vote</h2>
+    <!--- FALTA VERIFICAÇAO SE É USER DAS BATTLES OU VOTANTE-->
   {{/each}}
-  <!--- FALTA VERIFICAÇAO SE É USER DAS BATTLES OU VOTANTE-->
-  <h3> VOTE FOR YOUR FAVORITE</h3>
-  <button id="main-button-submit" type="button" class="btn btn-default challenger-vote">
-    {{challengerUsername}}
-  </button>
-  <h4>OR</h4>
-  <button id="main-button-submit" type="button" class="btn btn-default opponent-vote">
-    {{opponentUsername}}
-  </button>
+  <h3>
+    VOTE FOR YOUR FAVORITE</h3>
+  {{#unless votedChallenger}}
+    <button id="main-button-submit" type="button" class="btn btn-default challenger-vote">
+      {{challengerUsername}}
+    </button>
+  {{/unless}}
+
+  {{#if votedChallenger}}
+    <button id="main-button-submit" type="button" class="btn btn-default challenger-vote" style="background-color: blue">
+      {{challengerUsername}}
+    </button>
+  {{/if}}
+
+  <h4>OR
+  </h4>
+
+  {{#unless votedOpponent}}
+    <button id="main-button-submit" type="button" class="btn btn-default opponent-vote">
+      {{opponentUsername}}
+    </button>
+  {{/unless}}
+
+  {{#if votedOpponent}}
+    <button id="main-button-submit" type="button" class="btn btn-default opponent-vote" style="background-color: blue">
+      {{opponentUsername}}
+    </button>
+  {{/if}}
 </template>
