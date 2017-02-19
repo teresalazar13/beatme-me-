@@ -1,11 +1,34 @@
 <template name="profile">
-  <h1>{{username}}'s Profile</h1>
-  {{> accept}}
-  <p>Victories
-    {{victories}}</p>
-  <p>Defeats
-    {{defeats}}</p>
-  {{#each memesByUser}}
-    {{> meme_user_page}}
-  {{/each}}
+  <div class="container-fluid">
+    <div class="profile-main">
+      <div class="col-md-4">
+        <img class="profile-image" src="/forever-alone.jpg" alt="">
+      </div>
+      <div class="col-md-8">
+        <p class="profile-title">{{username}}'s Profile</p>
+        <div class="profile-list">
+          <div class="profile-list-inner">
+            <p class="profile-list-text-victory">
+              <span class="glyphicon glyphicon-arrow-up"></span>
+              {{victories}}
+              Victories
+            </p>
+          </div>
+          <div class="profile-list-inner">
+            <p class="profile-list-text-defeats">
+              <span class="glyphicon glyphicon-arrow-down"></span>
+              {{defeats}}
+              Defeats
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-battles col-md-12">
+      {{> accept}}
+      {{#each memesByUser}}
+        {{> meme_user_page}}
+      {{/each}}
+    </div>
+  </div>
 </template>

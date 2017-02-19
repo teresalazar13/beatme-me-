@@ -1,10 +1,59 @@
 <template name="battles">
-  <h1>Battles</h1>
-  <input type="text" name="battleuser" placeholder="Username of the user you want to battle(Leave blank for a random match)" class="form-control" id="battle-user"/>
-  <button type="button" class="battle-submit">
-    Invite for Battle
-  </button>
-  {{#each battlesList}}
-    {{> battlePreview}}
-  {{/each}}
+  <div class="container-fluid battles-body">
+    <div class="battle-submit-div">
+      <input type="text" name="battleuser" placeholder="Username (Leave blank for a random match)" class="form-control" id="battle-user"/>
+      <button type="button" class="btn btn-default battle-submit" id="submit-battle-button">
+        Invite for Battle
+      </button>
+    </div>
+    <div class="battles-ongoing">
+      <p class="battles-ongoing-text">Ongoing battles</p>
+      <hr class="battles-hr">
+
+      {{#each battlesList}}
+        <a href="/battle/{{_id}}" class="battle-preview-text">
+          <p>
+            <strong>{{challengerUsername}}</strong>
+            versus
+            <strong>{{opponentUsername}}</strong>
+          </p>
+        </a>
+        <p>{{roundNumber}}</p>
+        <p>{{category}}</p>
+      {{/each}}
+
+    </div>
+
+    <div class="battles-ongoing">
+      <p class="battles-ongoing-text">Finished battles</p>
+      <hr class="battles-hr">
+      <table class="table">
+        {{#each battlesList}}
+          <tr>
+            <td>
+              <span class="glyphicon glyphicon-arrow-up"></span>
+            </td>
+            <td>
+              <strong>{{challengerUsername}}</strong>
+            </td>
+            <td>
+              <a href="/battle/{{_id}}" class="battle-preview-text">
+                versus
+              </a>
+            </td>
+            <td>
+              <strong>{{opponentUsername}}</strong>
+            </td>
+            <td>
+              <span class="glyphicon glyphicon-arrow-down"></span>
+            </td>
+            <td>{{createdAt}}</td>
+            <td>{{roundNumber}}</td>
+            <td>{{category}}</td>
+          </tr>
+        {{/each}}
+      </table>
+
+    </div>
+  </div>
 </template>

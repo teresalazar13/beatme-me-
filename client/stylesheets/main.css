@@ -3,8 +3,8 @@
 	padding: 0;
 }
 
-hr {
-	border: 0.1px solid #333;
+.hr-main {
+	border-bottom: 5px solid rgb(163,46,46);
 	width: 70%;
 	margin: 0 auto;
 	margin-top: 2%;
@@ -105,10 +105,13 @@ ul li .authentication-buttons:hover{
 	display:inline-block;
 }
 
-
 .navbar-brand-img {
 	width: 120px;
-	margin-top:-8px;
+	margin-top:-5px;
+}
+
+#logout {
+	background-color: rgba(163,46,46,0.6);
 }
 
 .main-title {
@@ -216,4 +219,140 @@ ul li .authentication-buttons:hover{
 .meme-username-link:hover {
 	color: rgba(163,46,46,0.6);
 	text-decoration: none;
+}
+
+.profile-button-victories {
+	background-color: rgb(163,46,46);
+	color: white;
+	float: left;
+}
+
+.profile-button-defeats {
+	background-color: #333;
+	color: white;
+	float: left;
+}
+
+.profile-list {
+
+}
+.col-md-4 {
+	padding:0;
+}
+
+.profile-meme {
+	text-align: center;
+	display: inline-block;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	padding: 0;
+}
+
+.profile-meme-all {
+	width: 80%;
+}
+
+.profile-meme-image {
+	width: 80%;
+}
+
+.profile-list-text-victory {
+	color: rgb(163,46,46);
+}
+
+.profile-list-text-defeats {
+	color: #333;
+}
+
+.profile-list-inner {
+	height: 50px;
+}
+
+.profile-main {
+  margin-left: 5%;
+  margin-top: 3%;
+}
+
+.profile-title {
+  font-size: 30px;
+  font-family: Avenir;
+}
+
+.profile-image {
+  max-width: 70%;
+  max-height: 70%;
+}
+
+.battles-body {
+	margin-top: 5%;
+	margin-left: 5%;
+}
+
+.battle-submit-div {
+	display: block;
+}
+
+#battle-user {
+	width: 30%;
+}
+
+#submit-battle-button {
+	margin-top: 0.5%;
+	background-color: rgb(163,46,46);
+	color: white;
+	font-size:
+}
+
+.battles-ongoing {
+	margin-top: 3%;
+}
+
+.battles-ongoing-text {
+	font-size: 20px;
+	color: rgb(163,46,46);
+	font-weight: 500;
+	margin-bottom: -0.6%;
+	font-family: Avenir;
+}
+
+.battles-hr {
+	border-bottom: 5px solid rgb(163,46,46);
+	width: 20%;
+}
+
+.battle-preview-text {
+	color: #595959;
+	text-decoration: none;
+}
+
+.battle-preview-text:hover {
+	color: rgb(163,46,46);
+	text-decoration: none;
+}
+
+.glyphicon-arrow-up {
+	padding:10px;
+	border-radius:5px;
+	background-color:rgb(163,46,46);
+	color:white;
+  margin-right: 1%;
+}
+
+.glyphicon-arrow-down {
+	padding:10px;
+	border-radius:5px;
+	background-color:black;
+	color:white;
+  margin-right: 1%;
+}
+
+.profile-list-text-defeats, .profile-list-text-victory {
+  font-size: 18px;
+}
+
+table td {
+	padding: 4px 0;
+}
+
+.profile-battles {
 }
