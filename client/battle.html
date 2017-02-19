@@ -2,13 +2,13 @@
   <h3 class="battle-result">
     {{shittyHelper}}</h3>
   <p class="battle-duration">Battle
-    <strong>{{timeFromNow}}</strong></p>
-    <hr class="battle-duration-hr">
+    <strong>{{timeFromNow}}</strong>
+  </p>
+  <hr class="battle-duration-hr">
   <p class="battle-opponents">{{challengerUsername}}
     versus
     {{opponentUsername}}
   </p>
-
   {{#if notFinished}}
     {{#if isInBattle}}
       {{#if hasNotSubmited}}
@@ -38,7 +38,7 @@
         </div>
       {{/if}}
       {{#unless hasNotSubmited}}
-        <p>You have already submitted a meme for this round</p>
+        <p style="text-align:center">You have already submitted a meme for this round</p>
       {{/unless}}
     {{/if}}
     {{#unless notFinished}}
@@ -47,52 +47,56 @@
   {{/if}}
   {{#if notFinished}}
     {{#unless isInBattle}}
-      <h3>
-        VOTE FOR YOUR FAVORITE</h3>
-      <h1>{{challengerVotes.length}}
-        challenger votes</h1>
-      {{#unless votedChallenger}}
-        <button id="main-button-submit" type="button" class="btn btn-default challenger-vote">
-          {{challengerUsername}}
-        </button>
-      {{/unless}}
-
-      {{#if votedChallenger}}
-        <button id="main-button-submit" type="button" class="btn btn-default challenger-vote" style="background-color: blue">
-          {{challengerUsername}}
-        </button>
-      {{/if}}
-
-      <h4>OR
-      </h4>
-      <h3>{{opponentVotes.length}}
-        opponent votes</h3>
-
-      {{#unless votedOpponent}}
-        <button id="main-button-submit" type="button" class="btn btn-default opponent-vote">
-          {{opponentUsername}}
-        </button>
-      {{/unless}}
-
-      {{#if votedOpponent}}
-        <button id="main-button-submit" type="button" class="btn btn-default opponent-vote" style="background-color: blue">
-          {{opponentUsername}}
-        </button>
-      {{/if}}
+      <div class="manos">
+        <h3 class="instructions">
+          VOTE FOR YOUR FAVORITE</h3>
+      </div>
     {{/unless}}
   {{/if}}
-  <div class="manos">
-  <button class="battle-opponent"> {{challengerUsername}}</button>
-  <button class="battle-challenger"> {{opponentUsername}}</button>
-</div>
   {{#each rounds}}
-
-    <p class="battle-category col-md-12"><strong>{{category}}</strong></p>
-    <p> {{opponentUsername}}</p>
+    <p class="battle-category col-md-12">
+      <strong>{{category}}</strong>
+    </p>
+    <p>
+      {{opponentUsername}}</p>
     <hr class="battle-category-hr col-md-12">
     <img class="battle-opponent-img col-md-6" src="{{opponent}}">
     <br>
     <br>
     <img class="battle-challenger-img col-md-6" src="{{challenger}}">
   {{/each}}
+  {{#if notFinished}}
+    {{#unless isInBattle}}
+      <div class="votes col-md-12">
+        <div class="col-md-6">
+          <h3 class="font-footer">{{challengerVotes.length}}
+            challenger votes</h3>
+          {{#unless votedChallenger}}
+            <button id="main-button-submit" type="button" class="btn btn-default challenger-vote">
+              {{challengerUsername}}
+            </button>
+          {{/unless}}
+          {{#if votedChallenger}}
+            <button id="main-button-submit" type="button" class="btn btn-default challenger-vote" style="background-color: rgb(163,46,46); color:white">
+              {{challengerUsername}}
+            </button>
+          {{/if}}
+        </div>
+        <div class="col-md-6">
+          <h3 class="font-footer">{{opponentVotes.length}}
+            opponent votes</h3>
+          {{#unless votedOpponent}}
+            <button id="main-button-submit" type="button" class="btn btn-default opponent-vote">
+              {{opponentUsername}}
+            </button>
+          {{/unless}}
+          {{#if votedOpponent}}
+            <button id="main-button-submit" type="button" class="btn btn-default opponent-vote" style="background-color: rgb(163,46,46); color:white">
+              {{opponentUsername}}
+            </button>
+          {{/if}}
+        </div>
+      </div>
+    {{/unless}}
+  {{/if}}
 </template>

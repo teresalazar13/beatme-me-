@@ -10,7 +10,7 @@ Session.setDefault("use-url", true);
 
 Template.main.helpers({
   memes: function() {
-    return Memes.find();
+    return Memes.find({}, {$sort:{createdAt:-1}});
   },
 
   use_url: function () {
