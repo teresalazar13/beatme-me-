@@ -47,6 +47,47 @@ Template.battle.helpers({
         return true;
       }
     }
+  },
+
+  notFinished: function(){
+    return !this.finished;
+  },
+
+  timeFromNow: function() {
+    return moment(this.createdAt).fromNow();
+  },
+
+  shittyHelper: function() {
+    var now = new Date();
+    var difTime = now - this.createdAt;
+    if (difTime > 2000) {
+      if (! this.finished) {
+        Meteor.call("battle.finish", this, function(error, result) {
+          if (result == "challenger") {
+            return Meteor.users.findOne({"_id": this.challenger}).username + " WON";
+          }
+          else if(result == "opponent") {
+            return Meteor.users.findOne({"_id": this.opponent}).username + " WON";
+          }
+          else {
+            return "TIE";
+          }
+        });
+      }
+      else {
+        var helper = this.challengerVotes.length;
+        var helper2 = this.opponentVotes.length;
+        if (helper > helper2) {
+          return Meteor.users.findOne({"_id": this.challenger}).username + " WON";
+        }
+        else if (helper2 > helper) {
+          return Meteor.users.findOne({"_id": this.opponent}).username + " WON";
+        }
+        else {
+          return "TIE";
+        }
+      }
+    }
   }
 });
 

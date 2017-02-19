@@ -16,7 +16,8 @@ Meteor.publish("battles", function() {
       "rounds": true,
       "challengerVotes" : true,
 	    "opponentVotes": true,
-      "createdAt": true
+      "createdAt": true,
+      "finished": true,
     }
   });
 });
