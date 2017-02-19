@@ -4,8 +4,12 @@ import { ReactiveVar } from 'meteor/reactive-var';
 import './battles.html';
 
 Template.battles.helpers({
-  battlesList: function() {
-    return Battles.find();
+  battlesListOngoing: function() {
+    return Battles.find({finished: false});
+  },
+
+  battlesListFinished: function() {
+    return Battles.find({finished: true});
   },
 
   challengerUsername: function() {

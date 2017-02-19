@@ -3,9 +3,36 @@ Template.accept.helpers({
 		return Battles.find({ $and: [{ opponent: Meteor.userId() }, { accepted: false }] });
 	},
 
-	acceptedBattles: function() {
-		return Battles.find({$or:[{ $and: [{ challenger: Meteor.userId() }, { accepted: true }]},{ $and: [{ opponent: Meteor.userId() }, { accepted: true }] }]});
+	ongoingBattles: function() {
+		return Battles.find({
+			$or: [
+				{$and:[
+					{ opponent: Meteor.userId() },
+					{ finished: false },
+				]},
+				{$and:[
+					{ challenger: Meteor.userId() },
+					{ finished: false },
+				]}
+			]
+		});
 	},
+
+	finishedBattles: function() {
+		return Battles.find({
+			$or: [
+				{$and:[
+					{ opponent: Meteor.userId() },
+					{ finished: true },
+				]},
+				{$and:[
+					{ challenger: Meteor.userId() },
+					{ finished: true },
+				]}
+			]
+		});
+	},
+
 	challengerUsername: function() {
     return Meteor.users.findOne({"_id": this.challenger}).username;
   },

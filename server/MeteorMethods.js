@@ -35,17 +35,26 @@ Meteor.methods({
 
   'battle.finish': function(battle) {
     Battles.update({"_id":battle._id}, {$set: {finished: true}});
+    console.log(Meteor.users.findOne({"_id": battle.opponent}));
+    console.log(Meteor.users.findOne({"_id": battle.challenger}));
+
     if (battle.opponentVotes.length > battle.challengerVotes.length) {
-      Meteor.users.update({"_id": this.opponent}, { $inc: {victories: 1} });
-      Meteor.users.update({"_id": this.challenger}, { $inc: {defeats: 1} });
+      Meteor.users.update({"_id": battle.opponent}, { $inc: {victories: 1} });
+      Meteor.users.update({"_id": battle.challenger}, { $inc: {defeats: 1} });
+      console.log(Meteor.users.findOne({"_id": battle.opponent}));
+      console.log(Meteor.users.findOne({"_id": battle.challenger}));
       return "opponent";
     }
     else if (battle.opponentVotes.length < battle.challengerVotes.length){
-      Meteor.users.update({"_id": this.challenger}, { $inc: {victories: 1} });
-      Meteor.users.update({"_id": this.opponent}, { $inc: {defeats: 1} });
+      Meteor.users.update({"_id": battle.challenger}, { $inc: {victories: 1} });
+      Meteor.users.update({"_id": battle.opponent}, { $inc: {defeats: 1} });
+      console.log(Meteor.users.findOne({"_id": battle.opponent}));
+      console.log(Meteor.users.findOne({"_id": battle.challenger}));
       return "challenger";
     }
     else {
+      console.log(Meteor.users.findOne({"_id": battle.opponent}));
+      console.log(Meteor.users.findOne({"_id": battle.challenger}));
       return "tie";
     }
   },

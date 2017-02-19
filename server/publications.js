@@ -28,7 +28,7 @@ Meteor.publish("usersData", function() {
         fields: {
           "username": true,
           "victories": true,
-          "defeats": true
+          "defeats": true,
         }
       });
     } else {

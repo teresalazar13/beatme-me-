@@ -20,7 +20,22 @@
 		<div class="profile-ongoing-div col-md-4">
 			<p class="profile-ongoing-title">Ongoing battles</p>
 			<hr class="profile-ongoing-hr">
-			{{#each acceptedBattles}}
+			{{#each ongoingBattles}}
+				<a href="/battle/{{_id}}" class="battle-preview-text">
+					<p>
+						<strong>{{challengerUsername}}</strong>
+						versus
+						<strong>{{opponentUsername}}</strong>
+					</p>
+				</a>
+				<p>{{roundNumber}}</p>
+				<p>{{category}}</p>
+			{{/each}}
+		</div>
+		<div class="profile-finished-div col-md-4">
+			<p class="profile-ongoing-title">Finished battles</p>
+			<hr class="profile-ongoing-hr">
+			{{#each finishedBattles}}
 				<a href="/battle/{{_id}}" class="battle-preview-text">
 					<p>
 						<strong>{{challengerUsername}}</strong>

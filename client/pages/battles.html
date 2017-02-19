@@ -10,7 +10,7 @@
       <p class="battles-ongoing-text">Ongoing battles</p>
       <hr class="battles-hr">
 
-      {{#each battlesList}}
+      {{#each battlesListOngoing}}
         <a href="/battle/{{_id}}" class="battle-preview-text">
           <p>
             <strong>{{challengerUsername}}</strong>
@@ -28,7 +28,7 @@
       <p class="battles-ongoing-text">Finished battles</p>
       <hr class="battles-hr">
       <table class="table">
-        {{#each battlesList}}
+        {{#each battlesListFinished}}
           <tr>
             <td>
               <span class="glyphicon glyphicon-arrow-up"></span>
