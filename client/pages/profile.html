@@ -26,9 +26,11 @@
     </div>
     <div class="profile-battles col-md-12">
       {{> accept}}
-      {{#each memesByUser}}
-        {{> meme_user_page}}
-      {{/each}}
+      <div class="profile-memes col-md-12">
+        {{#each memesByUser}}
+          {{> meme_user_page}}
+        {{/each}}
+      </div>
     </div>
   </div>
 </template>
