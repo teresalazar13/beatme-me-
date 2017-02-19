@@ -30,5 +30,13 @@
     <br>
     <img src="{{challenger}}">
   {{/each}}
-
+  <!--- FALTA VERIFICAÇAO SE É USER DAS BATTLES OU VOTANTE-->
+  <h3> VOTE FOR YOUR FAVORITE</h3>
+  <button id="main-button-submit" type="button" class="btn btn-default challenger-vote">
+    {{challengerUsername}}
+  </button>
+  <h4>OR</h4>
+  <button id="main-button-submit" type="button" class="btn btn-default opponent-vote">
+    {{opponentUsername}}
+  </button>
 </template>
