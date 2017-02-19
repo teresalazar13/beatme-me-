@@ -8,4 +8,18 @@ Template.leaderboard.helpers({
 		});
 		return items;
 	},
+
+	cena: function() {
+		if (this.index < 4) {
+			return true;
+		}
+		return false;
+	},
+
+	winner: function() {
+		if (this.index ==1) {
+			return true;
+		}
+		return false;
+	}
 });

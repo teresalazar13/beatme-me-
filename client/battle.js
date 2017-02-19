@@ -63,7 +63,7 @@ Template.battle.helpers({
   shittyHelper: function() {
     var now = new Date();
     var difTime = now - this.createdAt;
-    if (difTime > 2000000) {
+    if (difTime > 200000000) {
       if (! this.finished) {
         Meteor.call("battle.finish", this, function(error, result) {
           if (result == "challenger") {

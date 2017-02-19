@@ -1,12 +1,14 @@
 <template name="battle">
-  <h1>Battle
-    {{timeFromNow}}</h1>
-  <h1>
-    {{shittyHelper}}</h1>
-  <p>{{challengerUsername}}
+  <h3 class="battle-result">
+    {{shittyHelper}}</h3>
+  <p class="battle-duration">Battle
+    <strong>{{timeFromNow}}</strong></p>
+    <hr class="battle-duration-hr">
+  <p class="battle-opponents">{{challengerUsername}}
     versus
     {{opponentUsername}}
   </p>
+
   {{#if notFinished}}
     {{#if isInBattle}}
       {{#if hasNotSubmited}}
@@ -80,10 +82,12 @@
     {{/unless}}
   {{/if}}
   {{#each rounds}}
+    <p class="battle-category"><strong>{{category}}</strong></p>
+    <p> {{opponentUsername}}</p>
     <img src="{{opponent}}">
     <br>
-    {{category}}
     <br>
     <img src="{{challenger}}">
+    <p> {{challengerUsername}}</p>
   {{/each}}
 </template>
