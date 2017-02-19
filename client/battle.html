@@ -81,13 +81,18 @@
       {{/if}}
     {{/unless}}
   {{/if}}
+  <div class="manos">
+  <button class="battle-opponent"> {{challengerUsername}}</button>
+  <button class="battle-challenger"> {{opponentUsername}}</button>
+</div>
   {{#each rounds}}
-    <p class="battle-category"><strong>{{category}}</strong></p>
+
+    <p class="battle-category col-md-12"><strong>{{category}}</strong></p>
     <p> {{opponentUsername}}</p>
-    <img src="{{opponent}}">
+    <hr class="battle-category-hr col-md-12">
+    <img class="battle-opponent-img col-md-6" src="{{opponent}}">
     <br>
     <br>
-    <img src="{{challenger}}">
-    <p> {{challengerUsername}}</p>
+    <img class="battle-challenger-img col-md-6" src="{{challenger}}">
   {{/each}}
 </template>
