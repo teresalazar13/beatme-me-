@@ -13,9 +13,7 @@ Template.authentication.events({
   },
 
   'click #sign-up': function(event) {
-    console.log("cenasd");
     if (currentTab == 'sign_up') {
-      console.log("cenasd");
       Accounts.createUser({
           username: $('#sign-up-tab').find('#username-input').val(),
           password: $('#sign-up-tab').find('#password-input').val()
