@@ -140,7 +140,7 @@ Meteor.methods({
         "Trump Memes",
         "Selfie"
       ];
-      var n = Math.round(Math.random() * cat.length);
+      var n = Math.round(Math.random() * (cat.length-1));
       var newcat = cat[n];
       Battles.update({"_id": battle}, { $push: {rounds: {category: newcat, challenger: null,  opponent: null}} });
     }
