@@ -13,15 +13,21 @@
     {{#if isInBattle}}
       {{#if hasNotSubmited}}
         <div class="submit-meme">
-          <select class="main-select" name="meme-template" id="meme-template">
-            <option value="default">Choose a used template</option>
-            <option value="tenguy">Ten Guy</option>
-            <option value="fry">Confused Fry</option>
-            <option value="ch">Captain Hindsight</option>
-            <option value="yodawg">Xzibit</option>
-          </select>
+          <button id="use-template" class="btn btn-default main-choice-buttons">Use template</button>
+          <button id="use-url" class="btn btn-default main-choice-buttons">Insert URL</button>
+          {{#unless use_url}}
+            <select class="main-select" name="meme-template" id="meme-template">
+              <option value="default">Choose a used template</option>
+              <option value="tenguy">Ten Guy</option>
+              <option value="fry">Confused Fry</option>
+              <option value="ch">Captain Hindsight</option>
+              <option value="yodawg">Xzibit</option>
+            </select>
+          {{/unless}}
           <form class="submit">
-            <input type="text" name="urltext" placeholder="Image URL" class="form-control main-inputs" id="urltext"/>
+            {{#if use_url}}
+              <input type="text" name="urltext" placeholder="Image URL" class="form-control main-inputs" id="urltext"/>
+            {{/if}}
             <input type="text" name="toptext" placeholder="Top text" class="form-control main-inputs" id="toptext"/>
             <input type="text" name="bottomtext" placeholder="Bottom text" class="form-control main-inputs" id="bottomtext"/>
             <button id="main-button-submit" type="button" class="btn btn-default meme-submit">
