@@ -94,5 +94,22 @@ Meteor.methods({
     Battles.update({
       _id: battle}, { $set: {rounds: rounds} }
     );
+    var lastRound = Battles.findOne({"_id": battle}).rounds[rounds.length - 1];
+    if (lastRound.opponent !== null && lastRound.challenger !== null) {
+      var cat = [
+        "Battle Ship",
+        "Mad Lad",
+        "Programming Jokes",
+        "WildCard",
+        "Crazy Animals",
+        "We all have that one friend...",
+        "Unexpected",
+        "Trump Memes",
+        "Selfie"
+      ];
+      var n = Math.round(Math.random() * cat.length);
+      var newcat = cat[n];
+      Battles.update({"_id": battle}, { $push: {rounds: {category: newcat, challenger: null,  opponent: null}} });
+    }
   }
 });

@@ -19,6 +19,34 @@ Template.battle.helpers({
       return true;
     }
     return false;
+  },
+
+  isInBattle: function() {
+    if (Meteor.userId() == this.challenger || Meteor.userId() == this.opponent) {
+      return true;
+    }
+    return false;
+  },
+
+  hasNotSubmited: function() {
+    var isOpponent = this.opponent == Meteor.userId();
+    var lastRound = this.rounds[this.rounds.length - 1];
+    if (isOpponent) {
+      if (lastRound.opponent !== null) {
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
+    else {
+      if (lastRound.challenger !== null) {
+        return false;
+      }
+      else {
+        return true;
+      }
+    }
   }
 });
 

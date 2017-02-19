@@ -4,60 +4,70 @@
     versus
     {{opponentUsername}}
   </p>
-  <div class="submit-meme">
-    <p class="main-submit-text">It's yout turn to submit a meme</p>
-    <select class="main-select" name="meme-template" id="meme-template">
-      <option value="default">Choose a used template</option>
-      <option value="tenguy">Ten Guy</option>
-      <option value="fry">Confused Fry</option>
-      <option value="ch">Captain Hindsight</option>
-      <option value="yodawg">Xzibit</option>
-    </select>
-    <form class="submit">
-      <input type="text" name="urltext" placeholder="Image URL" class="form-control main-inputs" id="urltext"/>
-      <input type="text" name="toptext" placeholder="Top text" class="form-control main-inputs" id="toptext"/>
-      <input type="text" name="bottomtext" placeholder="Bottom text" class="form-control main-inputs" id="bottomtext"/>
-      <button id="main-button-submit" type="button" class="btn btn-default meme-submit">
-        Submit
+  {{#if isInBattle}}
+    {{#if hasNotSubmited}}
+      <div class="submit-meme">
+        <select class="main-select" name="meme-template" id="meme-template">
+          <option value="default">Choose a used template</option>
+          <option value="tenguy">Ten Guy</option>
+          <option value="fry">Confused Fry</option>
+          <option value="ch">Captain Hindsight</option>
+          <option value="yodawg">Xzibit</option>
+        </select>
+        <form class="submit">
+          <input type="text" name="urltext" placeholder="Image URL" class="form-control main-inputs" id="urltext"/>
+          <input type="text" name="toptext" placeholder="Top text" class="form-control main-inputs" id="toptext"/>
+          <input type="text" name="bottomtext" placeholder="Bottom text" class="form-control main-inputs" id="bottomtext"/>
+          <button id="main-button-submit" type="button" class="btn btn-default meme-submit">
+            Submit
+          </button>
+        </form>
+        <img class="preview-meme" src="{{sourcePreview}}" alt="">
+      </div>
+    {{/if}}
+    {{#unless hasNotSubmited}}
+      <p>You have already submitted</p>
+    {{/unless}}
+  {{/if}}
+  {{#unless isInBattle}}
+    <h3>
+      VOTE FOR YOUR FAVORITE</h3>
+    <h1>{{challengerVotes.length}}
+      challenger votes</h1>
+    {{#unless votedChallenger}}
+      <button id="main-button-submit" type="button" class="btn btn-default challenger-vote">
+        {{challengerUsername}}
       </button>
-    </form>
-    <img class="preview-meme" src="{{sourcePreview}}" alt="">
-  </div>
+    {{/unless}}
+
+    {{#if votedChallenger}}
+      <button id="main-button-submit" type="button" class="btn btn-default challenger-vote" style="background-color: blue">
+        {{challengerUsername}}
+      </button>
+    {{/if}}
+
+    <h4>OR
+    </h4>
+    <h3>{{opponentVotes.length}}
+      opponent votes</h3>
+
+    {{#unless votedOpponent}}
+      <button id="main-button-submit" type="button" class="btn btn-default opponent-vote">
+        {{opponentUsername}}
+      </button>
+    {{/unless}}
+
+    {{#if votedOpponent}}
+      <button id="main-button-submit" type="button" class="btn btn-default opponent-vote" style="background-color: blue">
+        {{opponentUsername}}
+      </button>
+    {{/if}}
+  {{/unless}}
   {{#each rounds}}
     <img src="{{opponent}}">
     <br>
     {{category}}
     <br>
     <img src="{{challenger}}">
-    <h2>Your vote</h2>
-    <!--- FALTA VERIFICAÇAO SE É USER DAS BATTLES OU VOTANTE-->
   {{/each}}
-  <h3>
-    VOTE FOR YOUR FAVORITE</h3>
-  {{#unless votedChallenger}}
-    <button id="main-button-submit" type="button" class="btn btn-default challenger-vote">
-      {{challengerUsername}}
-    </button>
-  {{/unless}}
-
-  {{#if votedChallenger}}
-    <button id="main-button-submit" type="button" class="btn btn-default challenger-vote" style="background-color: blue">
-      {{challengerUsername}}
-    </button>
-  {{/if}}
-
-  <h4>OR
-  </h4>
-
-  {{#unless votedOpponent}}
-    <button id="main-button-submit" type="button" class="btn btn-default opponent-vote">
-      {{opponentUsername}}
-    </button>
-  {{/unless}}
-
-  {{#if votedOpponent}}
-    <button id="main-button-submit" type="button" class="btn btn-default opponent-vote" style="background-color: blue">
-      {{opponentUsername}}
-    </button>
-  {{/if}}
 </template>
