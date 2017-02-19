@@ -16,6 +16,7 @@ Meteor.publish("battles", function() {
       "rounds": true,
       "challengerVotes" : true,
 	    "opponentVotes": true,
+      "createdAt": true,
     },
     sort: {
       createdAt: -1
