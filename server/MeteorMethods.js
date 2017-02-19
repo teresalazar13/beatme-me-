@@ -27,9 +27,27 @@ Meteor.methods({
       challengerVotes: [],
       opponentVotes: [],
       accepted: false,
+      finished: false,
       rounds: [{category: newcat, challenger: null,  opponent: null}],
       createdAt: new Date()
     });
+  },
+
+  'battle.finish': function(battle) {
+    Battles.update({"_id":battle._id}, {$set: {finished: true}});
+    if (battle.opponentVotes.length > battle.challengerVotes.length) {
+      Meteor.users.update({"_id": this.opponent}, { $inc: {victories: 1} });
+      Meteor.users.update({"_id": this.challenger}, { $inc: {defeats: 1} });
+      return "opponent";
+    }
+    else if (battle.opponentVotes.length < battle.challengerVotes.length){
+      Meteor.users.update({"_id": this.challenger}, { $inc: {victories: 1} });
+      Meteor.users.update({"_id": this.opponent}, { $inc: {defeats: 1} });
+      return "challenger";
+    }
+    else {
+      return "tie";
+    }
   },
 
   'vote.challenger': function(battle) {
@@ -95,7 +113,7 @@ Meteor.methods({
       _id: battle}, { $set: {rounds: rounds} }
     );
     var lastRound = Battles.findOne({"_id": battle}).rounds[rounds.length - 1];
-    if (lastRound.opponent !== null && lastRound.challenger !== null) {
+    if (lastRound.opponent !== null && lastRound.challenger !== null && (rounds.length < 3)) {
       var cat = [
         "Battle Ship",
         "Mad Lad",
@@ -110,6 +128,8 @@ Meteor.methods({
       var n = Math.round(Math.random() * cat.length);
       var newcat = cat[n];
       Battles.update({"_id": battle}, { $push: {rounds: {category: newcat, challenger: null,  opponent: null}} });
+    }if (lastRound.opponent !== null && lastRound.challenger !== null && (rounds.length == 3)){
+      Battle.update({"_id": battle}, {$set: {finished: true}});
     }
   }
 });
